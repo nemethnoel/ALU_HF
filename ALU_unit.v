@@ -54,9 +54,9 @@ case (opcode)
 	LSHIFT: outDataReg <= {opA[6:0],cin} ;
 	RSHIFT: outDataReg <= { cin, opB[7:1] };
 	XOR:  outDataReg <= opA^opB;
-	AND:  outDataReg <= opA&opB;
+	AND:  outDataReg <= (opA&opB);
 	NAND: outDataReg <= ~(opA&opB);
-	OR:	outDataReg <= opA|opB;
+	OR:	outDataReg <= (opA|opB);
 	NOR:  outDataReg <= ~(opA|opB);
 	CMP: 
 	begin

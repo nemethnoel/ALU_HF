@@ -25,7 +25,7 @@ module CPU(
 	input [7:0]  	data_in,
 	input [6:0]  	opcode,
 	input  			cin,
-	input 			cout,
+	output 			cout,
 	input 			load,
 	input 			ce,
 
@@ -38,14 +38,13 @@ reg [7:0] operands [0:7];
 
 
 //regiszterezendõ bemeneti értékek
-reg [7:0] alu_output;
 reg cin_reg, cout_reg;
 reg [3:0] operation;
 reg [2:0] reg_selector;
 
 
 wire [7:0] operandA, operandB;
-wire alu_output_wire;
+wire [7:0] alu_output_wire;
 wire [3:0] op_wire;
 wire cin_wire, cout_wire;
 
@@ -60,6 +59,8 @@ assign op_wire = operation;
 assign operandA = operands[0];
 assign operandB = operands[reg_selector];
 assign data_out = operands[0];
+assign cout = cout_reg;
+assign cin_wire = cin_reg;
  
 
 
@@ -92,7 +93,8 @@ begin
 		end
 	end
 	begin
-		operands[0] <= alu_output;
+		operands[0] <= alu_output_wire;
+		cout_reg <= cout_wire;
 		state <=IDLE;
 	end
 end
