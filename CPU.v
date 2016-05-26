@@ -34,6 +34,7 @@ module CPU(
 
 
 reg [7:0] operands [0:7];
+reg [7:0] alu_output;
 reg cin_reg, cout_reg;
 reg [3:0] operation;
 reg [2:0] reg_selector;
@@ -50,10 +51,12 @@ reg [2:0] state;
 
 
 
-assign operation = op_wire;
+assign op_wire = operation;
 assign operandA = operands(0);
 assign operandB = operands(reg_selector);
-assign data_out = operands(0)
+assign data_out = operands(0);
+assign alu_data_out = alu_output;
+ 
 
 always @ (posedge clk, posedge rst)
 if (rst)
@@ -85,7 +88,10 @@ begin
 	else if (state==OPERATION)
 		state <= WAIT;
 	else 
+	begin
+		operands(0) <= alu_output;
 		state <=IDLE;
+	end
 end
 		
 
