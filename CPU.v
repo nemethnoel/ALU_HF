@@ -44,29 +44,48 @@ wire cin_wire, cout_wire;
 
 
 parameter IDLE    = 2'b00;
-parameter OP1 = 2'b01;
-parameter OP2 = 2'b10;
-parameter   =   2'b11;
+parameter OPERATION = 2'b01;
+parameter WAIT = 2'b10;
 reg [2:0] state;
 
 
 
-
-
-always @ (posedge clk, posedge rst)
-if (rst)
-	
-else
-	if (ce==1 && load ==1 && state==0)
-		operands(opcode[6:4]) <= 
-
-	else if (ce == 1 )
-
+assign operation = op_wire;
+assign operandA = operands(0);
+assign operandB = operands(reg_selector);
 
 always @ (posedge clk, posedge rst)
 if (rst)
-	
+begin
+	operands <= 0;
+	reg_selector <= 0;
+	state <= IDLE;
+	cin_reg <= 0;
+	cout_reg <= 0;
+	operation <= 0;
+end
 else
+begin
+	if (state == IDLE)
+	begin
+		if (ce==1 && load ==1 )
+		begin
+			operands(opcode[6:4]) <= data_in;
+		else 
+		else if (ce == 1 && load == 0 )
+		begin 
+			reg_selector <= opcode[6:4];
+			cin_reg <= cin;
+			cout_reg <=cout;
+			operation <= opcode[3:0];
+			state <= OPERATION;
+		end
+	end
+	else if (state==OPERATION)
+		state <= WAIT;
+	else 
+		state <=IDLE;
+end
 		
 
 
