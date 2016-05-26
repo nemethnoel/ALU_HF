@@ -33,17 +33,22 @@ module CPU(
     );
 
 
+//Regiszterek az értékek tárolására
 reg [7:0] operands [0:7];
+
+
+//regiszterezendõ bemeneti értékek
 reg [7:0] alu_output;
 reg cin_reg, cout_reg;
 reg [3:0] operation;
 reg [2:0] reg_selector;
-wire [7:0] operandA, operandB, alu_data_out;
+
+
+wire [7:0] operandA, operandB;
 wire [3:0] op_wire;
 wire cin_wire, cout_wire;
 
-
-
+//Aktuális állapotot tároló regiszter
 parameter IDLE    = 1'b0;
 parameter OPERATION = 2'b1;
 reg state;
@@ -54,8 +59,8 @@ assign op_wire = operation;
 assign operandA = operands(0);
 assign operandB = operands(reg_selector);
 assign data_out = operands(0);
-assign alu_data_out = alu_output;
  
+
 
 always @ (posedge clk, posedge rst)
 if (rst)
@@ -92,12 +97,12 @@ end
 		
 
 
-
-ALU_unit (
+//tisztán kombinációs hálózat ALU példányosítása
+ALU_unit ALU(
          .clk     (clk),
 			.opA		(operandA)
 			.opB		(operandB)
-			.outQ		(alu_data_out)
+			.outQ		(alu_output)
 			.opcode	(op_wire)
 			.cin		(cin_wire)
 			.cout		(cout_wire)

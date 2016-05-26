@@ -18,8 +18,20 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module tb_top(
-    );
+module tb_top;
+
+	
+	reg 			clk,
+	reg			rst,
+
+	reg [7:0]  	data_in,
+	reg [6:0]  	opcode,
+	reg  			cin,
+	reg 			cout,
+	reg 			load,
+	reg 			ce,
+
+	reg [7:0]  	data_out
 
 parameter ADD    = 4'b0000;
 parameter SUB    = 4'b0001;
@@ -32,6 +44,21 @@ parameter NAND   = 4'b0111;
 parameter OR     = 4'b1000;
 parameter NOR    = 4'b1001;
 
+
+
+
+//Device Under Test instantiation 
+module CPU DUT(
+	.clk 			(clk)
+	.rst 			(rst)
+	.data_in		(data_in)
+	.opcode 		(opcode)
+	.cin 			(cin)
+	.cout 		(cout)
+	.load 		(load) 
+	.ce 			(ce)
+	.data_out 	(data_out)
+  );
 
 
 endmodule
