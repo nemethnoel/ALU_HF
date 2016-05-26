@@ -27,7 +27,8 @@ module CPU(
 	input  			cin,
 	input 			cout,
 	input 			load,
-	
+	input 			ce,
+
 	output [7:0]  	data_out,
     );
 
@@ -39,14 +40,34 @@ reg [2:0] reg_selector;
 wire [7:0] operandA, operandB, alu_data_out;
 wire [3:0] op_wire;
 wire cin_wire, cout_wire;
-reg [3:0] actual_state;
+
+
+
+parameter IDLE    = 2'b00;
+parameter OP1 = 2'b01;
+parameter OP2 = 2'b10;
+parameter   =   2'b11;
+reg [2:0] state;
 
 
 
 
 
-always @ (posedge clk)
+always @ (posedge clk, posedge rst)
+if (rst)
 	
+else
+	if (ce==1 && load ==1 && state==0)
+		operands(opcode[6:4]) <= 
+
+	else if (ce == 1 )
+
+
+always @ (posedge clk, posedge rst)
+if (rst)
+	
+else
+		
 
 
 
