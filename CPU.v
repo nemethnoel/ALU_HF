@@ -54,7 +54,6 @@ parameter OPERATION = 2'b1;
 reg state;
 
 
-
 assign op_wire = operation;
 assign operandA = operands(0);
 assign operandB = operands(reg_selector);

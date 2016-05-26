@@ -21,17 +21,17 @@
 module tb_top;
 
 	
-	reg 			clk,
-	reg			rst,
-
-	reg [7:0]  	data_in,
-	reg [6:0]  	opcode,
-	reg  			cin,
-	reg 			cout,
-	reg 			load,
-	reg 			ce,
-
-	reg [7:0]  	data_out
+	reg 			clk;
+	reg			rst;
+	reg [7:0]  	data_in;
+	reg [6:0]  	opcode;
+	reg  			cin;
+	reg 			cout;
+	reg 			load;
+	reg 			ce;
+	reg [7:0]  	data_out;
+	
+	
 
 parameter ADD    = 4'b0000;
 parameter SUB    = 4'b0001;
@@ -43,6 +43,26 @@ parameter AND    = 4'b0110;
 parameter NAND   = 4'b0111;
 parameter OR     = 4'b1000;
 parameter NOR    = 4'b1001;
+
+
+
+
+initial begin
+		// Initialize Inputs
+		clk = 1;
+		rst = 1;
+		data_in = 0;
+		opcode = 0;
+		cin = 0;
+		cout = 0;
+		load = 0;
+		ce = 0;
+	end
+   
+   initial #102 rst = 0;
+   
+   always #5.2 clk <= ~clk;
+
 
 
 
