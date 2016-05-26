@@ -45,6 +45,7 @@ reg [2:0] reg_selector;
 
 
 wire [7:0] operandA, operandB;
+wire alu_output_wire;
 wire [3:0] op_wire;
 wire cin_wire, cout_wire;
 
@@ -53,18 +54,22 @@ parameter IDLE    = 1'b0;
 parameter OPERATION = 2'b1;
 reg state;
 
+integer i;
 
 assign op_wire = operation;
-assign operandA = operands(0);
-assign operandB = operands(reg_selector);
-assign data_out = operands(0);
+assign operandA = operands[0];
+assign operandB = operands[reg_selector];
+assign data_out = operands[0];
  
 
 
 always @ (posedge clk, posedge rst)
 if (rst)
 begin
-	operands <= 0;
+	for (i = 0 ; i<4 ; i= i+1)
+	begin
+		operands[i] <= 0;
+	end
 	reg_selector <= 0;
 	state <= IDLE;
 	cin_reg <= 0;
@@ -76,9 +81,7 @@ begin
 	if (state == IDLE)
 	begin
 		if (ce==1 && load ==1 )
-		begin
-			operands(opcode[6:4]) <= data_in;
-		else 
+			operands[opcode[6:4]] <= data_in;
 		else if (ce == 1 && load == 0 )
 		begin 
 			reg_selector <= opcode[6:4];
@@ -89,7 +92,7 @@ begin
 		end
 	end
 	begin
-		operands(0) <= alu_output;
+		operands[0] <= alu_output;
 		state <=IDLE;
 	end
 end
@@ -98,12 +101,11 @@ end
 
 //tisztán kombinációs hálózat ALU példányosítása
 ALU_unit ALU(
-         .clk     (clk),
-			.opA		(operandA)
-			.opB		(operandB)
-			.outQ		(alu_output)
-			.opcode	(op_wire)
-			.cin		(cin_wire)
+			.opA		(operandA),
+			.opB		(operandB),
+			.outData		(alu_output_wire),
+			.opcode	(op_wire),
+			.cin		(cin_wire),
 			.cout		(cout_wire)
 );
 

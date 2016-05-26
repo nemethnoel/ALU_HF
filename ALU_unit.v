@@ -21,20 +21,26 @@
 module ALU_unit(		
 		input  [7:0]  opA,
 		input  [7:0]  opB,
-		output [7:0]  outQ,
+		output [7:0]  outData,
 		
 		input  [3:0]  opcode,
 		
 		input         cin,
-		output        cout,
+		output        cout
     );
 
+reg [7:0] outDataReg;
+reg cout_reg;
+
+
+assign  cout = cout_reg;
+assign  outData = outDataReg ;
 
 parameter ADD    = 4'h0;
 parameter SUB    = 4'h1;
 parameter LSHIFT = 4'h2;
 parameter RSHIFT = 4'h3;
-parameter EXOR   = 4'h4;
+parameter XOR   = 4'h4;
 parameter CMP   = 4'h5;
 parameter AND    = 4'h6;
 parameter NAND   = 4'h7;
@@ -43,24 +49,25 @@ parameter NOR    = 4'h9;
 
 always  @ ( opA, opB, cin, opcode)  
 case (opcode)
-	ADD: 	{cout,outQ} <= opA + opB + cin;		
-	SUB:	outQ <= opA - opB + cin;
-	LSHIFT: outQ <= {opA[6:0],cin} ;
-	RSHIFT: outQ <= { cin, opB[7:1] };
-	XOR:  outQ <= opA^opB;
-	AND:  outQ <= opA&opB;
-	NAND: outQ <= ~(opA&opB);
-	OR:	outQ <= opA|opB;
-	NOR:  outQ <= ~(opA|opB);
+	ADD: 	{cout_reg,outDataReg} <= opA + opB + cin;		
+	SUB:	outDataReg <= opA - opB + cin;
+	LSHIFT: outDataReg <= {opA[6:0],cin} ;
+	RSHIFT: outDataReg <= { cin, opB[7:1] };
+	XOR:  outDataReg <= opA^opB;
+	AND:  outDataReg <= opA&opB;
+	NAND: outDataReg <= ~(opA&opB);
+	OR:	outDataReg <= opA|opB;
+	NOR:  outDataReg <= ~(opA|opB);
 	CMP: 
 	begin
-		if(opA == opB) outQ<=8'h01;
-		else if (opA>opB) outQ<=8'h02;
-		else if (opA<opB) outQ=8'h03;	
+		if(opA == opB) outDataReg <= 8'h01;
+		else if (opA>opB)outDataReg <= 8'h02;
+		else if (opA<opB) outDataReg <= 8'h03;	
 	end
-	default:  outQ <= 8'h0;
+	default:  outDataReg <= 8'h0;
 	
 endcase 
+
 
 
 endmodule

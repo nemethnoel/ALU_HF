@@ -68,15 +68,15 @@ initial begin
 
 
 //Device Under Test instantiation 
-module CPU DUT(
-	.clk 			(clk)
-	.rst 			(rst)
-	.data_in		(data_in)
-	.opcode 		(opcode)
-	.cin 			(cin)
-	.cout 		(cout)
-	.load 		(load) 
-	.ce 			(ce)
+CPU DUT(
+	.clk 			(clk),
+	.rst 			(rst),
+	.data_in		(data_in),
+	.opcode 		(opcode),
+	.cin 			(cin),
+	.cout 		(cout),
+	.load 		(load),
+	.ce 			(ce),
 	.data_out 	(data_out)
   );
 
