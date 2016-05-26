@@ -23,13 +23,13 @@ module CPU(
 	input				rst,
 
 	input [7:0]  	data_in,
-	input [7:0]  	opcode,
+	input [6:0]  	opcode,
 	input  			cin,
 	input 			cout,
 	input 			load,
 	input 			ce,
 
-	output [7:0]  	data_out,
+	output [7:0]  	data_out
     );
 
 
