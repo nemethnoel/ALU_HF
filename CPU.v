@@ -19,6 +19,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module CPU(
+	input 			clk,
+	input				rst,
+
 	input [7:0]  	data_in,
 	input [7:0]  	opcode,
 	input  			cin,
@@ -29,6 +32,35 @@ module CPU(
     );
 
 
-reg [7:0] operands
+reg [7:0] operands [0:7];
+reg cin_reg, cout_reg;
+reg [3:0] operation;
+reg [2:0] reg_selector;
+wire [7:0] operandA, operandB, alu_data_out;
+wire [3:0] op_wire;
+wire cin_wire, cout_wire;
+reg [3:0] actual_state;
+
+
+
+
+
+always @ (posedge clk)
+	
+
+
+
+ALU_unit (
+         .clk     (clk),
+			.opA		(operandA)
+			.opB		(operandB)
+			.outQ		(alu_data_out)
+			.opcode	(op_wire)
+			.cin		(cin_wire)
+			.cout		(cout_wire)
+);
+
+
+
 
 endmodule
