@@ -53,6 +53,7 @@ reg [2:0] state;
 assign operation = op_wire;
 assign operandA = operands(0);
 assign operandB = operands(reg_selector);
+assign data_out = operands(0)
 
 always @ (posedge clk, posedge rst)
 if (rst)
