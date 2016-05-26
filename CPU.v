@@ -44,10 +44,9 @@ wire cin_wire, cout_wire;
 
 
 
-parameter IDLE    = 2'b00;
-parameter OPERATION = 2'b01;
-parameter WAIT = 2'b10;
-reg [2:0] state;
+parameter IDLE    = 1'b0;
+parameter OPERATION = 2'b1;
+reg state;
 
 
 
@@ -85,9 +84,6 @@ begin
 			state <= OPERATION;
 		end
 	end
-	else if (state==OPERATION)
-		state <= WAIT;
-	else 
 	begin
 		operands(0) <= alu_output;
 		state <=IDLE;
