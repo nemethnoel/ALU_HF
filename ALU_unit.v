@@ -50,13 +50,16 @@ parameter NOR    = 4'h9;
 always  @ ( opA, opB, cin, opcode)  
 if (opcode == ADD)
 	{cout_reg,outDataReg} <= opA + opB + cin;	
-else
+else if (opcode == SUB)
+	{cout, outDataReg} <= opA - opB + cin;
+else if (opcode == LSHIFT)
+	{cout, outDataReg} <= {opA[7:0],cin} ;
+else if (opcode == RSHIFT)
+	{outDataReg cout} <= { cin, opB[7:0] };
+else 
 begin
 	cout_reg <= 0;
 	case (opcode)
-		SUB:	outDataReg <= opA - opB + cin;
-		LSHIFT: outDataReg <= {opA[6:0],cin} ;
-		RSHIFT: outDataReg <= { cin, opB[7:1] };
 		XOR:  outDataReg <= opA^opB;
 		AND:  outDataReg <= opA&opB;
 		NAND: outDataReg <= ~(opA&opB);
