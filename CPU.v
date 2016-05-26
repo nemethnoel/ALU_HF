@@ -50,7 +50,7 @@ wire cin_wire, cout_wire;
 
 //Aktuális állapotot tároló regiszter
 parameter IDLE    = 1'b0;
-parameter OPERATION = 2'b1;
+parameter OPERATION = 1'b1;
 reg state;
 
 integer i;

@@ -48,26 +48,29 @@ parameter OR     = 4'h8;
 parameter NOR    = 4'h9;
 
 always  @ ( opA, opB, cin, opcode)  
-case (opcode)
-	ADD: 	{cout_reg,outDataReg} <= opA + opB + cin;		
-	SUB:	outDataReg <= opA - opB + cin;
-	LSHIFT: outDataReg <= {opA[6:0],cin} ;
-	RSHIFT: outDataReg <= { cin, opB[7:1] };
-	XOR:  outDataReg <= opA^opB;
-	AND:  outDataReg <= (opA&opB);
-	NAND: outDataReg <= ~(opA&opB);
-	OR:	outDataReg <= (opA|opB);
-	NOR:  outDataReg <= ~(opA|opB);
-	CMP: 
-	begin
-		if(opA == opB) outDataReg <= 8'h01;
-		else if (opA>opB)outDataReg <= 8'h02;
-		else if (opA<opB) outDataReg <= 8'h03;	
-	end
-	default:  outDataReg <= 8'h0;
-	
-endcase 
-
+if (opcode == ADD)
+	{cout_reg,outDataReg} <= opA + opB + cin;	
+else
+begin
+	cout_reg <= 0;
+	case (opcode)
+		SUB:	outDataReg <= opA - opB + cin;
+		LSHIFT: outDataReg <= {opA[6:0],cin} ;
+		RSHIFT: outDataReg <= { cin, opB[7:1] };
+		XOR:  outDataReg <= opA^opB;
+		AND:  outDataReg <= opA&opB;
+		NAND: outDataReg <= ~(opA&opB);
+		OR:	outDataReg <= opA|opB;
+		NOR:  outDataReg <= ~(opA|opB);
+		CMP: 
+		begin
+			if(opA == opB) outDataReg <= 8'h01;
+			else if (opA>opB)outDataReg <= 8'h02;
+			else outDataReg <= 8'h03;	
+		end
+		default:  outDataReg <= 8'h0;
+	endcase 
+end
 
 
 endmodule
