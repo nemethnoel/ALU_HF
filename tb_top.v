@@ -140,35 +140,35 @@ begin
 	cin = 1;						//8'b00001101
 #20 
 	opcode = {ACCU,RSHIFT}; //8'b10000110  
-   cin = 0;
+   cin = 0; //~1320 ns!
    
-#10 
+#20 
 	opcode = {REG1,CPY}; //ACCU =8'b10101010
-#10 
+#20 
 	opcode = {REG2,XOR}; //8'b10100101
-#10 
+#20 
 	opcode = {REG2,XOR}; //8'b10101010
-#10 
+#20 
 	opcode = {REG2,AND}; //8'b00001010
-#10 
+#20 
 	opcode = {REG2,NAND}; //8'b11110101
-#10 
+#20 
 	opcode = {REG2,OR}; //8'b11111111
-#10 
+#20 
 	opcode = {REG3,CPY}; //8'b00000101
-#10 
+#20 
 	opcode = {REG4,CMP}; //8'h02
-#10 
-	opcode = {REG3,AND}; //8'b00000100
-#10 
+#20
+   opcode = {REG3,CPY}; //8'b00000101
+#20  
+	opcode = {REG4,AND}; //8'b00000100
+#20 
 	opcode = {REG4,CMP}; //8'h01
-#10 
-	opcode = {ACCU,RSHIFT}; //8'b00000101
-#10 
+#20 
 	opcode = {REG4,CMP}; //8'h03
-#10 
+#20 
 	opcode = {REG1,CPY}; //ACCU =8'b10101010
-#10 
+#20 
 	opcode = {REG2,NOR}; //8'b01010000
 
 

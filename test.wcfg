@@ -10,10 +10,14 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="38" />
+   <WVObjectSize size="19" />
    <wvobject fp_name="/tb_top/cout_wire" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">cout_wire</obj_property>
       <obj_property name="ObjectShortName">cout_wire</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/data_out_wire" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data_out_wire[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out_wire[7:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/clk" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk</obj_property>
@@ -26,11 +30,6 @@
    <wvobject fp_name="/tb_top/data_in" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">data_in[7:0]</obj_property>
       <obj_property name="ObjectShortName">data_in[7:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/DUT/state" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">state</obj_property>
-      <obj_property name="ObjectShortName">state</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/load" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">load</obj_property>
@@ -40,23 +39,24 @@
       <obj_property name="ElementShortName">ce</obj_property>
       <obj_property name="ObjectShortName">ce</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_top/cin" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">cin</obj_property>
-      <obj_property name="ObjectShortName">cin</obj_property>
+   <wvobject fp_name="/tb_top/DUT/state" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/cout" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">cout</obj_property>
       <obj_property name="ObjectShortName">cout</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_top/data_out_wire" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">data_out_wire[7:0]</obj_property>
-      <obj_property name="ObjectShortName">data_out_wire[7:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
+   <wvobject fp_name="/tb_top/cin" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">cin</obj_property>
+      <obj_property name="ObjectShortName">cin</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/opcode" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">opcode[6:0]</obj_property>
       <obj_property name="ObjectShortName">opcode[6:0]</obj_property>
       <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffa500</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/DUT/operands[0]" type="array" db_ref_id="1">
       <obj_property name="DisplayName">label</obj_property>
@@ -112,101 +112,6 @@
       <obj_property name="ElementShortName">[7,7:0]</obj_property>
       <obj_property name="ObjectShortName">operands[7,7:0]</obj_property>
       <obj_property name="label">REG6</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/ADD" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">ADD[3:0]</obj_property>
-      <obj_property name="ObjectShortName">ADD[3:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/SUB" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">SUB[3:0]</obj_property>
-      <obj_property name="ObjectShortName">SUB[3:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/LSHIFT" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">LSHIFT[3:0]</obj_property>
-      <obj_property name="ObjectShortName">LSHIFT[3:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/RSHIFT" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">RSHIFT[3:0]</obj_property>
-      <obj_property name="ObjectShortName">RSHIFT[3:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/XOR" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">XOR[3:0]</obj_property>
-      <obj_property name="ObjectShortName">XOR[3:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/CMP" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">CMP[3:0]</obj_property>
-      <obj_property name="ObjectShortName">CMP[3:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/AND" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">AND[3:0]</obj_property>
-      <obj_property name="ObjectShortName">AND[3:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/NAND" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">NAND[3:0]</obj_property>
-      <obj_property name="ObjectShortName">NAND[3:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/OR" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">OR[3:0]</obj_property>
-      <obj_property name="ObjectShortName">OR[3:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/NOR" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">NOR[3:0]</obj_property>
-      <obj_property name="ObjectShortName">NOR[3:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/CPY" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">CPY[3:0]</obj_property>
-      <obj_property name="ObjectShortName">CPY[3:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/ACCU" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">ACCU[2:0]</obj_property>
-      <obj_property name="ObjectShortName">ACCU[2:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/REG0" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">REG0[2:0]</obj_property>
-      <obj_property name="ObjectShortName">REG0[2:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/REG1" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">REG1[2:0]</obj_property>
-      <obj_property name="ObjectShortName">REG1[2:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/REG2" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">REG2[2:0]</obj_property>
-      <obj_property name="ObjectShortName">REG2[2:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/REG3" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">REG3[2:0]</obj_property>
-      <obj_property name="ObjectShortName">REG3[2:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/REG4" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">REG4[2:0]</obj_property>
-      <obj_property name="ObjectShortName">REG4[2:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/REG5" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">REG5[2:0]</obj_property>
-      <obj_property name="ObjectShortName">REG5[2:0]</obj_property>
-      <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/REG6" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">REG6[2:0]</obj_property>
-      <obj_property name="ObjectShortName">REG6[2:0]</obj_property>
       <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
 </wave_config>
