@@ -23,7 +23,7 @@ module CPU(
 	input				rst,
 
 	input [7:0]  	data_in,
-	input [6:0]  	opcode,
+	input [6:0]  	opcode, // Valójában 8 bites az operandus, a 8. bit a 'load'
 	input  			cin,
 	output 			cout,
 	input 			load,
@@ -56,8 +56,8 @@ reg state;
 integer i;
 
 assign op_wire = operation;
-assign operandA = operands[0];
-assign operandB = operands[reg_selector];
+assign operandA = operands[0]; // Az egyik operandus mindig az Akku
+assign operandB = operands[reg_selector]; // Ez választja ki, hogy melyik regiszter a másik operandus
 assign data_out = operands[0];
 assign cout = cout_reg;
 assign cin_wire = cin_reg;
@@ -68,9 +68,9 @@ always @ (posedge clk, posedge rst)
 if (rst)
 begin
 	for (i = 0 ; i<4 ; i= i+1)
-	begin
-		operands[i] <= 0;
-	end
+      begin
+         operands[i] <= 0;
+      end
 	reg_selector <= 0;
 	state <= IDLE;
 	cin_reg <= 0;
@@ -78,27 +78,27 @@ begin
 	operation <= 0;
 end
 else
-begin
-	if (state == IDLE)
-	begin
-		if (ce==1 && load ==1 )
-			operands[opcode[6:4]] <= data_in;
-		else if (ce == 1 && load == 0 )
-		begin 
-			reg_selector <= opcode[6:4];
-			cin_reg <= cin;
-			cout_reg <=cout;
-			operation <= opcode[3:0];
-			state <= OPERATION;
-		end
-	end
-	else
-	begin
-		operands[0] <= alu_output_wire;
-		cout_reg <= cout_wire;
-		state <=IDLE;
-	end
-end
+   begin
+      if (state == IDLE)
+         begin
+            if (ce==1 && load ==1 ) // Ebben a helyzetben a regiszterek töltõdnek fel adatokkal
+               operands[opcode[6:4]] <= data_in;
+            else if (ce == 1 && load == 0 )
+               begin 
+                  reg_selector <= opcode[6:4];
+                  cin_reg <= cin;
+                  cout_reg <=cout;
+                  operation <= opcode[3:0];
+                  state <= OPERATION;
+               end
+         end
+      else
+         begin
+            operands[0] <= alu_output_wire;
+            cout_reg <= cout_wire;
+            state <=IDLE;
+         end
+   end
 		
 
 
