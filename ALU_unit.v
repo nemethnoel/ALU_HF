@@ -46,16 +46,17 @@ parameter AND    = 4'h6;
 parameter NAND   = 4'h7;
 parameter OR     = 4'h8;
 parameter NOR    = 4'h9;
+parameter CPY	  = 4'ha; //Copies value to the output (Copy to the ACCU)
 
 always  @ ( opA, opB, cin, opcode)  
 if (opcode == ADD)
 	{cout_reg,outDataReg} <= opA + opB + cin;	
 else if (opcode == SUB)
-	{cout, outDataReg} <= opA - opB + cin;
+	{cout_reg, outDataReg} <= opA - opB + cin;
 else if (opcode == LSHIFT)
-	{cout, outDataReg} <= {opA[7:0],cin} ;
+	{cout_reg, outDataReg} <= {opA[7:0],cin} ;
 else if (opcode == RSHIFT)
-	{outDataReg cout} <= { cin, opB[7:0] };
+	{outDataReg, cout_reg} <= { cin, opB[7:0] };
 else 
 begin
 	cout_reg <= 0;
@@ -65,6 +66,7 @@ begin
 		NAND: outDataReg <= ~(opA&opB);
 		OR:	outDataReg <= opA|opB;
 		NOR:  outDataReg <= ~(opA|opB);
+		CPY:  outDataReg <= opB;
 		CMP: 
 		begin
 			if(opA == opB) outDataReg <= 8'h01;

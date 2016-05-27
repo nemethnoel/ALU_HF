@@ -92,6 +92,7 @@ begin
 			state <= OPERATION;
 		end
 	end
+	else
 	begin
 		operands[0] <= alu_output_wire;
 		cout_reg <= cout_wire;
