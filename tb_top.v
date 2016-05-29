@@ -141,7 +141,6 @@ begin
 #20 
 	opcode = {ACCU,RSHIFT}; //8'b10000110  
    cin = 0; //~1320 ns!
-   
 #20 
 	opcode = {REG1,CPY}; //ACCU =8'b10101010
 #20 
@@ -171,122 +170,6 @@ begin
 #20 
 	opcode = {REG2,NOR}; //8'b01010000
 
-
-//#########
-///Loading registers with valid data
-//#21
-//   load = 1;
-//   ce = 1;
-//   opcode = {ACCU , 4'b0000};
-//   data_in = 8'b00000001;
-//#10	
-//	opcode = {REG0 , 4'b0000};
-//   data_in = 8'b00000010;
-//#10	
-//	opcode = {REG1 , 4'b0000};
-//   data_in = 8'b10101010;
-//	
-//#10	
-//	opcode = {REG2 , 4'b0000};
-//   data_in = 8'b00001111;
-//	
-//#10	
-//	opcode = {REG3 , 4'b0000};
-//   data_in = 8'b00000101;
-//	
-//#10	
-//	opcode = {REG4 , 4'b0000};
-//   data_in = 8'b00000100;
-//	
-//#10	
-//	opcode = {REG5 , 4'b0000};
-//   data_in = 8'b01000000;
-//	
-//#10	
-//	opcode = {REG6 , 4'b0000};
-//   data_in = 8'b10000000;
-//#10	
-//	load = 0;
-//   ce = 0;
-//   opcode = 0;
-//   data_in = 0;
-////End of register initialsation 
-//
-////DUT functionality test: 	
-//#30
-//	ce = 1;
-//	opcode = {REG0,ADD};  	// = 8'b00000011
-//#10
-//	ce = 0;
-//#10
-//	ce = 1;
-//	opcode = {ACCU,SUB };	//Accu-Accu=8'b000000000
-//#10
-//	ce = 0;
-//#30 
-//	ce=1;
-//	opcode = {REG0,ADD}; 	// = 8'b00000011
-//	cin = 1; //
-//#20
-//	opcode = {ACCU,LSHIFT}; // 8'b00000110
-//	cin = 0;
-//#20
-//	cin = 1;						//8'b00001101
-//   
-//#10 
-//	opcode = {ACCU,RSHIFT}; //8'b10000110
-//   cin = 0;
-//#10 
-//	opcode = {REG1,CPY}; //ACCU =8'b10101010
-//#10 
-//	opcode = {REG2,XOR}; //8'b10100101
-//#10 
-//	opcode = {REG2,XOR}; //8'b10101010
-//#10 
-//	opcode = {REG2,AND}; //8'b00001010
-//#10 
-//	opcode = {REG2,NAND}; //8'b11110101
-//#10 
-//	opcode = {REG2,OR}; //8'b11111111
-//#10 
-//	opcode = {REG3,CPY}; //8'b00000101
-//#10 
-//	opcode = {REG4,CMP}; //8'h02
-//#10 
-//	opcode = {REG3,AND}; //8'b00000100
-//#10 
-//	opcode = {REG4,CMP}; //8'h01
-//#10 
-//	opcode = {ACCU,RSHIFT}; //8'b00000101
-//#10 
-//	opcode = {REG4,CMP}; //8'h03
-//#10 
-//	opcode = {REG1,CPY}; //ACCU =8'b10101010
-//#10 
-//	opcode = {REG2,NOR}; //8'b01010000
-//
-
-
-
-
-
-
-
-
-/*parameter ADD    = 4'h0;
-parameter SUB    = 4'h1;
-parameter LSHIFT = 4'h2;
-parameter RSHIFT = 4'h3;
-parameter XOR    = 4'h4;
-parameter CMP    = 4'h5;
-parameter AND    = 4'h6;
-parameter NAND   = 4'h7;
-parameter OR     = 4'h8;
-parameter NOR    = 4'h9;
-parameter CPY	  = 4'ha;
-	*/
-	
-	
 end 
 
 //Device Under Test instantiation 
